@@ -22,6 +22,7 @@ async function deleteByStudentId(studentId) {
 
 module.exports = {
   create,
+  getAllStudents,
   getByStudentId,
   updateByStudentId,
   deleteByStudentId,
