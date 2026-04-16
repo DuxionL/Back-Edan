@@ -70,7 +70,7 @@ Protected endpoints require the `Authorization` header:
 
 ### PUT /api/students/:studentId
 - Update student biodata
-- Request body can include:
+- Request body can include: 
   - `address`
   - `phoneNumber`
 
@@ -127,3 +127,66 @@ Protected endpoints require the `Authorization` header:
 
 ## Notes
 - Some routes may require a valid JWT token.
+
+## Courses
+### POST /api/courses
+- Create a new course record
+- Protected route
+- Request body:
+  name (required)
+  code (required, unique)
+  sks (required, Number)
+  description (optional)
+  lecturer (optional, Object: name, nip, email)
+  teams_code (optional)
+  schedules (optional, Array of Objects: room, day, time)
+- example
+  {
+  "name": "BACK-END PROGRAMMING",
+  "code": "TK23022",
+  "sks": 4,
+  "lecturer": {
+    "name": "JANSON HENDRYLI, S. Kom. M.Kom.",
+    "nip": "10812001",
+    "email": "jansonh@fti.untar.ac.id"
+  },
+  "teams_code": "wkr6t8j",
+  "schedules": [
+    {
+      "room": "R0901",
+      "day": "SENIN",
+      "time": "15:30 s/d 17:10"
+    },
+    {
+      "room": "R0902",
+      "day": "RABU",
+      "time": "11:30 s/d 13:10"
+    }
+  ]
+}
+
+### GET /api/courses
+- Get all courses (Summary view)
+- Protected route
+
+### GET /api/courses/:id
+- Get full course detail by ID
+- Protected route
+
+### PUT /api/courses/:id
+- Update course data by ID
+- Protected route
+- Request body can include:
+  - `name` 
+  - `code`
+  - `sks`
+  - `description` 
+  - `lecturer` 
+  - `teams_code` 
+  - `schedule`
+
+### DELETE /api/courses/:id
+- Delete a course by ID
+- Protected route
+
+

@@ -6,6 +6,7 @@ const users = require('./components/users/users-route');
 const students = require('./components/students/students-route');
 const announcements = require('./components/announcements/announce-route');
 const grades = require('./components/grades/grades-route');
+const courses = require('./components/courses/courses-route');
 
 module.exports = () => {
   const app = express.Router();
@@ -16,6 +17,6 @@ module.exports = () => {
   students(app);
   announcements(app);
   grades(app);
-
+  courses(app);
   return app;
 };
