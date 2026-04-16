@@ -37,3 +37,48 @@
 5. DELETE /api/students/{studentId} - Delete Student Data
 - `localhost:5000/api/students/{studentId}`
 - ilangin anak dari databes, masukin ke backrooms
+
+
+# Currently Planned stuff
+## kalo udah, tandain kasih nama disamping buat tracking
+1. ~~/api/students~~ (Done by Garry/DuxionL)
+- ~~POST /students → Create biodata mahasiswa baru.~~
+  ~~GET /students → Read biodata mahasiswa~~
+  ~~GET /students/{id} → Read biodata mahasiswa berdasarkan ID.~~
+  ~~PUT /students/{id} → Update biodata mahasiswa (misalnya alamat, nomor HP).~~
+  ~~DELETE /students/{id} → Delete data mahasiswa (misalnya jika sudah lulus atau keluar).~~
+2. /api/schedule
+- POST /schedules → Tambah jadwal kuliah baru.
+  GET /schedules/{studentId} → Ambil jadwal kuliah mahasiswa tertentu.
+  PUT /schedules/{id} → Ubah jadwal kuliah (misalnya perubahan jam/ruangan).
+  DELETE /schedules/{id} → Hapus jadwal kuliah.
+3. /api/annoncements
+- POST /announcements → Buat pengumuman baru.
+  GET /announcements → Ambil semua pengumuman.
+  GET /announcements/{id} → Ambil detail pengumuman tertentu.
+  PUT /announcements/{id} → Edit pengumuman.
+  DELETE /announcements/{id} → Hapus pengumuman.
+4. /api/grades/semester
+- POST /grades/semester → Input nilai semester mahasiswa.
+  GET /grades/semester/{studentId} → Lihat nilai semester mahasiswa.
+  PUT /grades/semester/{id} → Update nilai semester.
+  DELETE /grades/semester/{id} → Hapus nilai semester.
+5. /api/grades/uts
+- POST /grades/uts → Input nilai UTS.
+  GET /grades/uts/{studentId} → Lihat nilai UTS mahasiswa.
+  PUT /grades/uts/{id} → Update nilai UTS.
+  DELETE /grades/uts/{id} → Hapus nilai UTS.
+6. /api/grades/uas
+- POST /grades/uas → Input nilai UAS.
+  GET /grades/uas/{studentId} → Lihat nilai UAS mahasiswa.
+  PUT /grades/uas/{id} → Update nilai UAS.
+  DELETE /grades/uas/{id} → Hapus nilai UAS.
+7. /api/courses
+- POST /courses → Tambah mata kuliah baru.
+  GET /courses → Ambil daftar semua mata kuliah.
+  GET /courses/{id} → Ambil detail mata kuliah tertentu.
+  PUT /courses/{id} → Update informasi mata kuliah.
+  DELETE /courses/{id} → Hapus mata kuliah.
+8. ~~/api/auth → Authorisasi akun~~ (Done by Garry/DuxionL)
+- ~~POST /auth/login~~
+  ~~GET /auth/protected~~
