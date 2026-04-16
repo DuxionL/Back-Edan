@@ -64,11 +64,11 @@
 - GET /grades/semester/{studentId} → Lihat nilai semester mahasiswa.
 - PUT /grades/semester/{id} → Update nilai semester.
 - DELETE /grades/semester/{id} → Hapus nilai semester.
-5. /api/grades/uts
-- POST /grades/uts → Input nilai UTS.
-- GET /grades/uts/{studentId} → Lihat nilai UTS mahasiswa.
-- PUT /grades/uts/{id} → Update nilai UTS.
-- DELETE /grades/uts/{id} → Hapus nilai UTS.
+5. ~~/api/grades/uts~~ (done by Moureno)
+- ~~POST /grades/uts → Input nilai UTS.~~
+- ~~GET /grades/uts/{studentId} → Lihat nilai UTS mahasiswa.~~
+- ~~PUT /grades/uts/{id} → Update nilai UTS.~~
+- ~~DELETE /grades/uts/{id} → Hapus nilai UTS.~~
 6. /api/grades/uas
 - POST /grades/uas → Input nilai UAS.
 - GET /grades/uas/{studentId} → Lihat nilai UAS mahasiswa.
