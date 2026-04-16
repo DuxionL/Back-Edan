@@ -41,6 +41,7 @@
 
 # Currently Planned stuff
 ## kalo udah, tandain kasih nama disamping buat tracking
+- (pake ~~ di dua sisi line buat cross out)
 1. ~~/api/students~~ (Done by Garry/DuxionL)
 - ~~POST /students → Create biodata mahasiswa baru.~~
   ~~GET /students → Read biodata mahasiswa~~
