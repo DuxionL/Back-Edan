@@ -11,11 +11,6 @@ const courseSchema = new mongoose.Schema({
     email: String,
   },
   teams_code: String,
-  schedules: [{
-    room: String,
-    day: String,
-    time: String,
-  }],
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });

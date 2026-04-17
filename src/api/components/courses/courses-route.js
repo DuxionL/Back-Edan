@@ -1,5 +1,4 @@
 const express = require('express');
-
 const coursesController = require('./courses-controller');
 const { authMiddleware } = require('../../middlewares');
 
@@ -8,18 +7,18 @@ const route = express.Router();
 module.exports = (app) => {
   app.use('/courses', route);
 
-  // GET /courses -> Ambil daftar semua mata kuliah
-  route.get('/',authMiddleware,  coursesController.getCourses);
+  // GET /api/courses
+  route.get('/', authMiddleware, coursesController.getCourses);
 
-  // POST /courses -> Tambah mata kuliah baru
+  // POST /api/courses
   route.post('/', authMiddleware, coursesController.createCourse);
 
-  // GET /courses/:id -> Ambil detail mata kuliah tertentu
+  // GET /api/courses/:id
   route.get('/:id', authMiddleware, coursesController.getCourse);
 
-  // PUT /courses/:id -> Update informasi mata kuliah
+  // PUT /api/courses/:id
   route.put('/:id', authMiddleware, coursesController.updateCourse);
 
-  // DELETE /courses/:id -> Hapus mata kuliah
+  // DELETE /api/courses/:id
   route.delete('/:id', authMiddleware, coursesController.deleteCourse);
 };

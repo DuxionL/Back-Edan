@@ -24,14 +24,14 @@ async function getCourse(request, response, next) {
 
 async function createCourse(request, response, next) {
   try {
-    const { name, code, sks, description, lecturer, teams_code, schedules } = request.body;
+    const { name, code, sks, description, lecturer, teams_code } = request.body;
     
     if (!name || !code || !sks) {
       throw errorResponder(errorTypes.VALIDATION_ERROR, 'Name, code, and sks are required');
     }
 
     await coursesService.createCourse({
-      name, code, sks, description, lecturer, teams_code, schedules
+      name, code, sks, description, lecturer, teams_code
     });
 
     return response.status(200).json({ message: 'Course created successfully' });

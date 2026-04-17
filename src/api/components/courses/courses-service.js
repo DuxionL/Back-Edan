@@ -23,7 +23,6 @@ async function getCourse(id) {
     description: course.description,
     lecturer: course.lecturer,
     teams_code: course.teams_code,
-    schedules: course.schedules,
   };
 }
 
