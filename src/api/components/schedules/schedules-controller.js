@@ -5,8 +5,8 @@ async function createSchedule(req, res, next) {
   try {
     const { studentId, courseId, room, day, time } = req.body;
 
-    if (!studentId || !courseId) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'studentId and courseId required');
+    if (!studentId || !courseId || !room || !day || !time) {
+      throw errorResponder(errorTypes.VALIDATION_ERROR, 'All fields are required');
     }
 
     await schedulesService.createSchedule({ studentId, courseId, room, day, time });

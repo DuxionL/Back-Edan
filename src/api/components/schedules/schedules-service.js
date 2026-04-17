@@ -1,7 +1,21 @@
 const schedulesRepository = require('./schedules-repository');
+const studentsRepository = require('../students/students-repository');
+const coursesRepository = require('../courses/courses-repository');
 const mongoose = require('mongoose');
 
 async function createSchedule(data) {
+  const { studentId, courseId } = data;
+
+  const student = await studentsRepository.getByStudentId(studentId);
+  if (!student) {
+    throw new Error('Student not found');
+  }
+
+  const course = await coursesRepository.getCourse(courseId);
+  if (!course) {
+    throw new Error('Course not found');
+  }
+
   return schedulesRepository.createSchedule(data);
 }
 
