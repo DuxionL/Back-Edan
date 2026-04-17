@@ -301,3 +301,29 @@ Protected endpoints require the `Authorization` header:
 - Protected route
 - URL param:
     - id (required, schedule ID)
+
+## Bills
+### POST /api/bills
+- Create a new bill (tagihan mahasiswa)
+- Protected route
+- Request body:
+    - studentId (required, Number, reference to students)
+    - semester (required, String)
+    - amount (required, Number)
+    - type (required, String: BPP | SKS)
+- example:
+    {
+      "studentId": 12345,
+      "semester": "1",
+      "amount": 5000000,
+      "type": "BPP"
+    }
+
+### GET /api/bills/:studentId
+- Get all bills for a specific student
+- Protected route
+- URL param:
+    - studentId (required, Number, reference to students)
+- Description:
+    - Returns list of bills belonging to the student
+    - Each bill includes amount, semester, type, and status (UNPAID | PAID)
