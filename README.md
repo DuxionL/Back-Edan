@@ -315,7 +315,7 @@ Protected endpoints require the `Authorization` header:
     {
       "studentId": 12345,
       "semester": "1",
-      "amount": 5000000,
+      "amount": 9000000,
       "type": "BPP"
     }
 
@@ -341,7 +341,7 @@ Protected endpoints require the `Authorization` header:
     {
       "studentId": 12345,
       "billId": "65f1a2b3c4d5e6f7890abc12",
-      "amount": 5000000,
+      "amount": 9000000,
       "method": "TRANSFER"
     }
 
