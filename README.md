@@ -189,4 +189,53 @@ Protected endpoints require the `Authorization` header:
 - Delete a course by ID
 - Protected route
 
+## Schedules
+### POST /api/schedules
+- Create a new schedule record (assign course to a student with specific time & room)
+- Protected route
+- Request body:
+    - studentId (required, Number)
+    - courseId (required, ObjectId, reference to course)
+    - room (required, String)
+    - day (required, String)
+    - time (required, String)
+- example:
+    {
+      "studentId": 12345,
+      "courseId": "65f1a2b3c4d5e6f7890abc12",
+      "room": "R0901",
+      "day": "SENIN",
+      "time": "15:30 s/d 17:10"
+    }
 
+### GET /api/schedules/:studentId
+- Get all schedules for a specific student
+- Protected route
+- URL param:
+    - studentId (required)
+- Description:
+    - Returns list of schedules belonging to the student
+    - Includes course information (using populate)
+
+### PUT /api/schedules/:id
+- Update schedule data (e.g., change room, day, time, or course)
+- Protected route
+- URL param:
+    - id (required, schedule ID)
+- Request body can include:
+    - room
+    - day
+    - time
+    - courseId
+- example:
+    {
+      "room": "R0902",
+      "day": "RABU",
+      "time": "11:30 s/d 13:10"
+    }
+
+### DELETE /api/schedules/:id
+- Delete a schedule by ID
+- Protected route
+- URL param:
+    - id (required, schedule ID)
