@@ -170,6 +170,9 @@ Protected endpoints require the `Authorization` header:
 * Delete TUGAS grade by record ID
 * Protected route
 
+### Protected routes
+Protected endpoints require the `Authorization` header:
+- `Authorization: JWT <token>`
 
 ## Announcements
 ### POST /api/announcements
