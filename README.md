@@ -78,26 +78,101 @@ Protected endpoints require the `Authorization` header:
 - Delete a student record
 
 ## Grades
-### POST /api/grades/uts
-- Create UTS grade record
-- Protected route
-- Request body:
-  - `studentId`
-  - `score`
 
-### GET /api/grades/uts/:studentId
-- Get UTS grade by `studentId`
-- Protected route
+### UTS
 
-### PUT /api/grades/uts/:id
-- Update UTS grade by record ID
-- Protected route
-- Request body:
-  - `score`
+#### POST /api/grades/uts
 
-### DELETE /api/grades/uts/:id
-- Delete UTS grade by record ID
-- Protected route
+* Create UTS grade record
+* Protected route
+* Request body:
+
+  * `studentId`
+  * `score`
+
+#### GET /api/grades/uts/:studentId
+
+* Get UTS grade by `studentId`
+* Protected route
+
+#### PUT /api/grades/:id
+
+* Update UTS grade by record ID
+* Protected route
+* Request body:
+
+  * `score`
+
+#### DELETE /api/grades/:id
+
+* Delete UTS grade by record ID
+* Protected route
+
+---
+
+### UAS
+
+#### POST /api/grades/uas
+
+* Create UAS grade record
+* Protected route
+* Request body:
+
+  * `studentId`
+  * `score`
+
+#### GET /api/grades/uas/:studentId
+
+* Get UAS grade by `studentId`
+* Protected route
+
+#### PUT /api/grades/:id
+
+* Update UAS grade by record ID
+* Protected route
+* Request body:
+
+  * `score`
+
+#### DELETE /api/grades/:id
+
+* Delete UAS grade by record ID
+* Protected route
+
+---
+
+### TUGAS
+
+#### POST /api/grades/tugas
+
+* Create TUGAS grade record
+* Protected route
+* Request body:
+
+  * `studentId`
+  * `score`
+
+#### GET /api/grades/tugas/:studentId
+
+* Get TUGAS grade by `studentId`
+* Protected route
+
+#### PUT /api/grades/:id
+
+* Update TUGAS grade by record ID
+* Protected route
+* Request body:
+
+  * `score`
+
+#### DELETE /api/grades/:id
+
+* Delete TUGAS grade by record ID
+* Protected route
+
+### Protected routes
+Protected endpoints require the `Authorization` header:
+- `Authorization: JWT <token>`
 
 ## Announcements
 ### POST /api/announcements
