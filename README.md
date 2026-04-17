@@ -327,3 +327,29 @@ Protected endpoints require the `Authorization` header:
 - Description:
     - Returns list of bills belonging to the student
     - Each bill includes amount, semester, type, and status (UNPAID | PAID)
+
+## Payments
+### POST /api/payments
+- Create a new payment (bayar tagihan mahasiswa)
+- Protected route
+- Request body:
+    - studentId (required, Number, reference to students)
+    - billId (required, ObjectId, reference to bills)
+    - amount (required, Number)
+    - method (required, String: TRANSFER)
+- example:
+    {
+      "studentId": 12345,
+      "billId": "65f1a2b3c4d5e6f7890abc12",
+      "amount": 5000000,
+      "method": "TRANSFER"
+    }
+
+### GET /api/payments/:studentId
+- Get all payment history for a specific student
+- Protected route
+- URL param:
+    - studentId (required)
+- Description:
+    - Returns list of payments made by the student
+    - Includes related bill information (using populate)
