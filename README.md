@@ -256,7 +256,7 @@ Protected endpoints require the `Authorization` header:
 - Create a new schedule record (assign course to a student with specific time & room)
 - Protected route
 - Request body:
-    - studentId (required, Number)
+    - studentId (required, Number, reference to students)
     - courseId (required, ObjectId, reference to course)
     - room (required, String)
     - day (required, String)
