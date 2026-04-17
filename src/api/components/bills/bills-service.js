@@ -3,7 +3,10 @@ const studentsRepository = require('../students/students-repository');
 
 async function createBill(data) {
   const student = await studentsRepository.getByStudentId(data.studentId);
-  if (!student) throw new Error('Student not found');
+
+  if (!student) {
+    throw new Error('Student not found');
+  }
 
   return billsRepository.create(data);
 }
