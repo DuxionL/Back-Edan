@@ -142,28 +142,16 @@ Protected endpoints require the `Authorization` header:
   schedules (optional, Array of Objects: room, day, time)
 - example
   {
-  "name": "BACK-END PROGRAMMING",
-  "code": "TK23022",
-  "sks": 4,
-  "lecturer": {
-    "name": "JANSON HENDRYLI, S. Kom. M.Kom.",
-    "nip": "10812001",
-    "email": "jansonh@fti.untar.ac.id"
-  },
-  "teams_code": "wkr6t8j",
-  "schedules": [
-    {
-      "room": "R0901",
-      "day": "SENIN",
-      "time": "15:30 s/d 17:10"
+    "name": "BACK-END PROGRAMMING",
+    "code": "TK23022",
+    "sks": 4,
+    "lecturer": {
+      "name": "JANSON HENDRYLI, S. Kom. M.Kom.",
+      "nip": "10812001",
+      "email": "jansonh@fti.untar.ac.id"
     },
-    {
-      "room": "R0902",
-      "day": "RABU",
-      "time": "11:30 s/d 13:10"
-    }
-  ]
-}
+    "teams_code": "wkr6t8j"
+  }
 
 ### GET /api/courses
 - Get all courses (Summary view)
@@ -183,7 +171,6 @@ Protected endpoints require the `Authorization` header:
   - `description` 
   - `lecturer` 
   - `teams_code` 
-  - `schedule`
 
 ### DELETE /api/courses/:id
 - Delete a course by ID
