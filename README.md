@@ -171,7 +171,6 @@ Protected endpoints require the `Authorization` header:
   - `description` 
   - `lecturer` 
   - `teams_code` 
-  - `schedule`
 
 ### DELETE /api/courses/:id
 - Delete a course by ID
