@@ -275,3 +275,8 @@ Protected endpoints require the `Authorization` header:
 - Dapatkan id dari method `GET /api/skpi` kemudian masukkan id ke dalam url
 - Ganti method ke DELETE
 - Protected route
+
+### Note 
+- Jika ingin melihat file skpi yang sudah diupload bisa menggunakan contoh url yang dibawah ini
+- `http://localhost:5000/uploads/skpi/:namafileskpi`
+- Nama file nya bisa didapatkan dibagian get skpi
