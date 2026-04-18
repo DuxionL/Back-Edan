@@ -177,4 +177,27 @@ Protected endpoints require the `Authorization` header:
 - Delete a course by ID
 - Protected route
 
+## SKPI
+### POST /api/skpi
+- Protected route
+- Pertama pastikan sudah mendapatkan token dari auth/login
+- Kemudian install multer menggunakan `npm install multer` karna kita butuh supaya bisa upload file
+- Download echo api versi app, karena saya coba di echo api di vscode tidak ada fitur atur jenis file
+- Key               Type     Value / Description
+  certificate_name  Text    Nama Sertifikat (Contoh: Juara 1 UI/UX)
+  organization      Text    Penyelenggara (Contoh: BEM FT)
+  year              Text    Tahun Perolehan (Contoh: 2026)
+  description       Text    Deskripsi singkat (Opsional)
+  certificate_file  File    Pilih file sertifikat (PNG/JPG/PDF)
+- berikut adalah contoh untuk post nya
+![alt text](image.png)
 
+### GET /api/skpi
+- Tetap menggunakan auth sesuai dengan yang di awal, hanya ganti method saja
+- Jangan lupa untuk mengambil id nya jika ingin melakukan delete
+- Protected route
+
+### DELETE /api/skpi/:id
+- Dapatkan id dari method `GET /api/skpi` kemudian masukkan id ke dalam url
+- Ganti method ke DELETE
+- Protected route
