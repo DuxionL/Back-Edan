@@ -4,8 +4,8 @@ const { errorResponder, errorTypes } = require('../../../core/errors');
 async function getMySkpi(request, response, next) {
   try {
     const userId = request.user.id;
-    const skpi = await skpiService.getSkpiByUser(userId);
-    return response.status(200).json(skpi);
+    const skpis = await skpiService.getSkpiByUser(userId);
+    return response.status(200).json(skpis);
   } catch (error) {
     return next(error);
   }
@@ -14,11 +14,23 @@ async function getMySkpi(request, response, next) {
 async function createSkpi(request, response, next) {
   try {
     const userId = request.user.id;
-    const { certificate_name, organization, year, description } = request.body;
+    
+    // DEBUG: Liat di terminal VS Code, apa isinya?
+    console.log('--- CEK BODY ---');
+    console.log(request.body); 
+
+    const certificate_name = request.body.certificate_name || request.body['certificate_name '];
+    const organization = request.body.organization || request.body['organization '];
+    const year = request.body.year || request.body['year '];
+    const description = request.body.description || '';
     const certificate_file = request.file ? request.file.path : null;
 
+    // Matikan throw sementara, kita pakai status 400 biasa biar kelihatan bedanya
     if (!certificate_name || !organization || !year) {
-      throw errorResponder(errorTypes.VALIDATION_ERROR, 'Data tidak lengkap');
+      return response.status(400).json({ 
+        message: 'Data masih dianggap tidak lengkap',
+        debug_body: request.body 
+      });
     }
 
     await skpiService.createSkpi({
@@ -39,8 +51,11 @@ async function createSkpi(request, response, next) {
 async function deleteSkpi(request, response, next) {
   try {
     const id = request.params.id;
-    await skpiService.deleteSkpi(id);
-    return response.status(200).json({ message: 'SKPI berhasil dihapus' });
+    const result = await skpiService.deleteSkpi(id);
+    if (!result) {
+      throw errorResponder(errorTypes.UNPROCESSABLE_ENTITY, 'SKPI tidak ditemukan');
+    }
+    return response.status(200).json({ message: 'SKPI dan file berhasil dihapus' });
   } catch (error) {
     return next(error);
   }

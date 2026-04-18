@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const SKPI = mongoose.model('SKPI');
+const { SKPI } = require('../../../models/skpi-schema')();
 
 async function getSkpiByUser(userId) {
   return SKPI.find({ user_id: userId });
@@ -9,17 +8,17 @@ async function createSkpi(data) {
   return SKPI.create(data);
 }
 
-async function deleteSkpi(id) {
-  return SKPI.deleteOne({ _id: id });
-}
-
 async function getSkpiById(id) {
   return SKPI.findById(id);
+}
+
+async function deleteSkpi(id) {
+  return SKPI.deleteOne({ _id: id });
 }
 
 module.exports = {
   getSkpiByUser,
   createSkpi,
-  deleteSkpi,
   getSkpiById,
+  deleteSkpi,
 };
