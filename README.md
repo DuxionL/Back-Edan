@@ -353,3 +353,61 @@ Protected endpoints require the `Authorization` header:
 - Description:
     - Returns list of payments made by the student
     - Includes related bill information (using populate)
+
+## semester
+### POST /api/semesters
+- Fungsi: Buat data semester baru untuk mahasiswa.
+- Protected route: Ya (Memerlukan token login).
+Request Body:
+studentId (required, Number): ID mahasiswa.
+year (required, String): Tahun akademik (contoh: "2023/2024").
+term (required, String): Semester (contoh: "Ganjil" atau "Genap").
+
+- example:
+{
+  "studentId": 12345,
+  "year": "2023/2024",
+  "term": "Ganjil"
+}
+
+### GET /api/semesters
+- Fungsi: Ambil semua daftar semester yang sudah terdaftar di database.
+- Protected route: Ya.
+- Description: Mengembalikan array berisi seluruh data semester.
+
+### GET /api/semesters/:id
+- Fungsi: Cari detail satu semester berdasarkan ID-nya.
+- Protected route: Ya.
+- URL Param: id (ObjectId semester).
+
+### GET /api/semesters/final/:studentId
+- Fungsi: Kalkulasi nilai akhir mahasiswa secara otomatis.
+- Protected route: Ya.
+- Description: - Mengambil semua nilai (Tugas, UTS, UAS) milik mahasiswa tersebut.
+- Menghitung rata-rata dengan bobot: Tugas 40%, UTS 30%, UAS 30%.
+
+- example
+{
+  "studentId": 12345,
+  "rincian": {
+    "tugas": 85,
+    "uts": 80,
+    "uas": 75
+  },
+  "nilaiAkhir": 80.5
+}
+
+### PUT /api/semesters/:id
+- Fungsi: Update data semester (misal ganti tahun atau term).
+- Protected route: Ya.
+- Request Body: year, term.
+
+- example:
+{
+  "year": "2024/2025",
+  "term": "Genap"
+}
+
+### DELETE /api/semesters/:id
+- Fungsi: Hapus data semester berdasarkan ID.
+- Protected route: Ya.
