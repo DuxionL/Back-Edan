@@ -8,15 +8,15 @@ const route = express.Router();
 module.exports = (app) => {
   app.use('/grades', route);
 
-  // POST /grades/uts
-  route.post('/uts', authMiddleware, gradesController.createUTS);
+  // CREATE (UTS, UAS, TUGAS)
+  route.post('/:type', authMiddleware, gradesController.createGrade);
 
-  // GET /grades/uts/:studentId
-  route.get('/uts/:studentId', authMiddleware, gradesController.getUTSByStudent);
+  // GET by student + type
+  route.get('/:type/:studentId', authMiddleware, gradesController.getGradeByStudent);
 
-  // PUT /grades/uts/:id
-  route.put('/uts/:id', authMiddleware, gradesController.updateUTS);
+  // UPDATE
+  route.put('/:id', authMiddleware, gradesController.updateGrade);
 
-  // DELETE /grades/uts/:id
-  route.delete('/uts/:id', authMiddleware, gradesController.deleteUTS);
+  // DELETE
+  route.delete('/:id', authMiddleware, gradesController.deleteGrade);
 };
