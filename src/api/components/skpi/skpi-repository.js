@@ -1,7 +1,7 @@
 const { SKPI } = require('../../../models/skpi-schema')();
 
-async function getSkpiByUser(userId) {
-  return SKPI.find({ user_id: userId });
+async function getSkpiByStudent(studentId) {
+  return SKPI.find({ student_id: studentId });
 }
 
 async function createSkpi(data) {
@@ -17,7 +17,7 @@ async function deleteSkpi(id) {
 }
 
 module.exports = {
-  getSkpiByUser,
+  getSkpiByStudent,
   createSkpi,
   getSkpiById,
   deleteSkpi,

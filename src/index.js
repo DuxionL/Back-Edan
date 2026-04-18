@@ -1,6 +1,9 @@
+const path = require('path');
 const { env, port } = require('./core/config');
 const logger = require('./core/logger')('app');
 const server = require('./core/server');
+
+server.use('/uploads', require('express').static(path.join(__dirname, '../uploads')));
 
 const app = server.listen(port, (err) => {
   if (err) {

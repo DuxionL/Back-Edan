@@ -2,10 +2,11 @@ const skpiRepository = require('./skpi-repository');
 const fs = require('fs');
 const path = require('path');
 
-async function getSkpiByUser(userId) {
-  const skpis = await skpiRepository.getSkpiByUser(userId);
+async function getSkpiByStudent(studentId) {
+  const skpis = await skpiRepository.getSkpiByStudent(studentId);
   return skpis.map((s) => ({
     id: s._id,
+    student_id: s.student_id,
     certificate_name: s.certificate_name,
     organization: s.organization,
     year: s.year,
@@ -20,10 +21,7 @@ async function createSkpi(data) {
 
 async function deleteSkpi(id) {
   const skpi = await skpiRepository.getSkpiById(id);
-  
-  if (!skpi) {
-    return null;
-  }
+  if (!skpi) return null;
 
   if (skpi.certificate_file) {
     const filePath = path.join(process.cwd(), skpi.certificate_file);
@@ -36,7 +34,7 @@ async function deleteSkpi(id) {
 }
 
 module.exports = {
-  getSkpiByUser,
+  getSkpiByStudent,
   createSkpi,
   deleteSkpi,
 };

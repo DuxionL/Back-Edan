@@ -338,3 +338,8 @@ term (required, String): Semester (contoh: "Ganjil" atau "Genap").
 ### DELETE /api/semesters/:id
 - Fungsi: Hapus data semester berdasarkan ID.
 - Protected route: Ya.
+
+### Note 
+- Jika ingin melihat file skpi yang sudah diupload bisa menggunakan contoh url yang dibawah ini
+- `http://localhost:5000/uploads/skpi/:namafileskpi`
+- Nama file nya bisa didapatkan dibagian get skpi

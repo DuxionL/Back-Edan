@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const skpiSchema = new mongoose.Schema({
-  user_id: {
+  student_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Student',
     required: true,
   },
   certificate_name: { type: String, required: true },
