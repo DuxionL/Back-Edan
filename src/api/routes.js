@@ -10,7 +10,7 @@ const courses = require('./components/courses/courses-route');
 const schedules = require('./components/schedules/schedules-route');
 const bills = require('./components/bills/bills-route');
 const payments = require('./components/payments/payments-route');
-
+const semester = require('./components/semester/semester-route');
 module.exports = () => {
   const app = express.Router();
 
@@ -24,5 +24,6 @@ module.exports = () => {
   schedules(app);
   bills(app);
   payments(app);
+  semester(app);
   return app;
 };
