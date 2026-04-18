@@ -6,33 +6,41 @@ function validateScore(score) {
   }
 }
 
-async function createUTS(studentId, score) {
+function validateType(type) {
+  const validTypes = ['UTS', 'UAS', 'TUGAS'];
+  if (!validTypes.includes(type)) {
+    throw new Error('Invalid grade type');
+  }
+}
+
+async function createGrade(studentId, score, type) {
   validateScore(score);
+  validateType(type);
 
   return gradeRepo.create({
     studentId,
-    type: 'UTS',
+    type,
     score
   });
 }
 
-async function updateUTS(id, score) {
-  validateScore(score);
+async function getGradeByStudent(studentId, type) {
+  validateType(type);
+  return gradeRepo.getByStudentAndType(studentId, type);
+}
 
+async function updateGrade(id, score) {
+  validateScore(score);
   return gradeRepo.updateById(id, { score });
 }
 
-async function getUTSByStudent(studentId) {
-  return gradeRepo.getByStudentAndType(studentId, 'UTS');
-}
-
-async function deleteUTS(id) {
+async function deleteGrade(id) {
   return gradeRepo.deleteById(id);
 }
 
 module.exports = {
-  createUTS,
-  getUTSByStudent,
-  updateUTS,
-  deleteUTS
+  createGrade,
+  getGradeByStudent,
+  updateGrade,
+  deleteGrade
 };

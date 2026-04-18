@@ -1,10 +1,16 @@
 const gradeService = require('./grades-service');
 
-async function createUTS(req, res) {
+async function createGrade(req, res) {
   try {
     const { studentId, score } = req.body;
+    const { type } = req.params;
 
-    const result = await gradeService.createUTS(studentId, score);
+    const result = await gradeService.createGrade(
+      studentId,
+      score,
+      type.toUpperCase()
+    );
+
     res.json(result);
 
   } catch (err) {
@@ -12,12 +18,17 @@ async function createUTS(req, res) {
   }
 }
 
-async function getUTSByStudent(req, res) {
+async function getGradeByStudent(req, res) {
   try {
-    const result = await gradeService.getUTSByStudent(req.params.studentId);
+    const { studentId, type } = req.params;
+
+    const result = await gradeService.getGradeByStudent(
+      studentId,
+      type.toUpperCase()
+    );
 
     if (!result) {
-      return res.status(404).json({ message: 'UTS not found' });
+      return res.status(404).json({ message: 'Grade not found' });
     }
 
     res.json(result);
@@ -27,14 +38,17 @@ async function getUTSByStudent(req, res) {
   }
 }
 
-async function updateUTS(req, res) {
+async function updateGrade(req, res) {
   try {
     const { score } = req.body;
 
-    const result = await gradeService.updateUTS(req.params.id, score);
+    const result = await gradeService.updateGrade(
+      req.params.id,
+      score
+    );
 
     if (!result) {
-      return res.status(404).json({ message: 'UTS not found' });
+      return res.status(404).json({ message: 'Grade not found' });
     }
 
     res.json(result);
@@ -44,15 +58,15 @@ async function updateUTS(req, res) {
   }
 }
 
-async function deleteUTS(req, res) {
+async function deleteGrade(req, res) {
   try {
-    const result = await gradeService.deleteUTS(req.params.id);
+    const result = await gradeService.deleteGrade(req.params.id);
 
     if (!result) {
-      return res.status(404).json({ message: 'UTS not found' });
+      return res.status(404).json({ message: 'Grade not found' });
     }
 
-    res.json({ message: 'UTS deleted successfully' });
+    res.json({ message: 'Grade deleted successfully' });
 
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -60,8 +74,8 @@ async function deleteUTS(req, res) {
 }
 
 module.exports = {
-  createUTS,
-  getUTSByStudent,
-  updateUTS,
-  deleteUTS
+  createGrade,
+  getGradeByStudent,
+  updateGrade,
+  deleteGrade
 };
