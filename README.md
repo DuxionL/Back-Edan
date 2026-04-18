@@ -251,102 +251,29 @@ Protected endpoints require the `Authorization` header:
 - Delete a course by ID
 - Protected route
 
-## Schedules
-### POST /api/schedules
-- Create a new schedule record (assign course to a student with specific time & room)
+## SKPI
+### POST /api/skpi
 - Protected route
-- Request body:
-    - studentId (required, Number, reference to students)
-    - courseId (required, ObjectId, reference to course)
-    - room (required, String)
-    - day (required, String)
-    - time (required, String)
-- example:
-    {
-      "studentId": 12345,
-      "courseId": "65f1a2b3c4d5e6f7890abc12",
-      "room": "R0901",
-      "day": "SENIN",
-      "time": "15:30 s/d 17:10"
-    }
+- Pertama pastikan sudah mendapatkan token dari auth/login
+- Kemudian install multer menggunakan `npm install multer` karna kita butuh supaya bisa upload file
+- Download echo api versi app, karena saya coba di echo api di vscode tidak ada fitur atur jenis file
+- Key               Type     Value / Description
+  certificate_name  Text    Nama Sertifikat (Contoh: Juara 1 UI/UX)
+  organization      Text    Penyelenggara (Contoh: BEM FT)
+  year              Text    Tahun Perolehan (Contoh: 2026)
+  description       Text    Deskripsi singkat (Opsional)
+  certificate_file  File    Pilih file sertifikat (PNG/JPG/PDF)
+- berikut adalah contoh untuk post nya
+![alt text](image.png)
 
-### GET /api/schedules/:studentId
-- Get all schedules for a specific student
+### GET /api/skpi
+- Tetap menggunakan auth sesuai dengan yang di awal, hanya ganti method saja
+- Jangan lupa untuk mengambil id nya jika ingin melakukan delete
 - Protected route
-- URL param:
-    - studentId (required)
-- Description:
-    - Returns list of schedules belonging to the student
-    - Includes course information (using populate)
 
-### PUT /api/schedules/:id
-- Update schedule data (e.g., change room, day, time, or course)
-- Protected route
-- URL param:
-    - id (required, schedule ID)
-- Request body can include:
-    - room
-    - day
-    - time
-    - courseId
-- example:
-    {
-      "room": "R0902",
-      "day": "RABU",
-      "time": "11:30 s/d 13:10"
-    }
-
-### DELETE /api/schedules/:id
-- Delete a schedule by ID
-- Protected route
-- URL param:
-    - id (required, schedule ID)
-
-## Bills
-### POST /api/bills
-- Create a new bill (tagihan mahasiswa)
-- Protected route
-- Request body:
-    - studentId (required, Number, reference to students)
-    - semester (required, String)
-    - amount (required, Number)
-    - type (required, String: BPP | SKS)
-- example:
-    {
-      "studentId": 12345,
-      "semester": "1",
-      "amount": 9000000,
-      "type": "BPP"
-    }
-
-### GET /api/bills/:studentId
-- Get all bills for a specific student
-- Protected route
-- URL param:
-    - studentId (required, Number, reference to students)
-- Description:
-    - Returns list of bills belonging to the student
-    - Each bill includes amount, semester, type, and status (UNPAID | PAID)
-
-## Payments
-### POST /api/payments
-- Create a new payment (bayar tagihan mahasiswa)
-- Protected route
-- Request body:
-    - studentId (required, Number, reference to students)
-    - billId (required, ObjectId, reference to bills)
-    - amount (required, Number)
-    - method (required, String: TRANSFER)
-- example:
-    {
-      "studentId": 12345,
-      "billId": "65f1a2b3c4d5e6f7890abc12",
-      "amount": 9000000,
-      "method": "TRANSFER"
-    }
-
-### GET /api/payments/:studentId
-- Get all payment history for a specific student
+### DELETE /api/skpi/:id
+- Dapatkan id dari method `GET /api/skpi` kemudian masukkan id ke dalam url
+- Ganti method ke DELETE
 - Protected route
 - URL param:
     - studentId (required)
