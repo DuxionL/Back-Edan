@@ -1,67 +1,36 @@
-// Pastikan nama model sesuai dengan yang ada di folder models (biasanya tanpa 's')
 const { Semester, Grades } = require('../../../models');
 
-/**
- * Create a new semester
- * @param {object} semesterData 
- * @returns {Promise}
- */
+// Fungsi buat simpan semester baru
 async function create(semesterData) {
-  // Menggunakan Semester (singular) sesuai definisi model Mongoose
   return Semester.create(semesterData);
 }
 
-/**
- * Get all semesters
- * @returns {Promise}
- */
+// Ambil semua list semester dari database
 async function getAllSemesters() {
   return Semester.find({});
 }
 
-/**
- * Get semester by ID
- * @param {string} id 
- * @returns {Promise}
- */
+// Cari data semester lewat ID-nya
 async function getById(id) {
   return Semester.findById(id);
 }
 
-/**
- * Find semester by year and term
- * @param {string} year 
- * @param {string} term 
- * @returns {Promise}
- */
+// Cari spesifik berdasarkan tahun sama term (semester)
 async function getByYearAndTerm(year, term) {
   return Semester.findOne({ year, term });
 }
 
-/**
- * Update semester
- * @param {string} id 
- * @param {object} updateData 
- * @returns {Promise}
- */
+// Update data semester berdasarkan ID
 async function updateById(id, updateData) {
   return Semester.findByIdAndUpdate(id, updateData, { new: true });
 }
 
-/**
- * Delete semester
- * @param {string} id 
- * @returns {Promise}
- */
+// Hapus data semester
 async function deleteById(id) {
   return Semester.findByIdAndDelete(id);
 }
 
-/**
- * Get grades by student ID
- * @param {string} studentId 
- * @returns {Promise}
- */
+// Ambil semua nilai berdasarkan ID mahasiswa
 async function getAllByStudentId(studentId) {
   return Grades.find({ studentId });
 }

@@ -1,67 +1,78 @@
 const semesterService = require('./semester-service');
 const { errorResponder, errorTypes } = require('../../../core/errors');
 
+// Buat data semester baru
 async function createSemester(req, res, next) {
   try {
-    const result = await semesterService.createSemester(req.body);
+    const data = await semesterService.createSemester(req.body);
     return res.status(201).json({
-      message: 'Semester created successfully',
-      data: result
+      message: 'Berhasil buat data semester',
+      data
     });
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 
+// Ambil semua daftar semester
 async function getAllSemesters(req, res, next) {
   try {
-    const result = await semesterService.getAllSemesters();
-    return res.status(200).json(result);
+    const semesters = await semesterService.getAllSemesters();
+    return res.status(200).json(semesters);
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 
+// Cari semester berdasarkan ID
 async function getSemesterById(req, res, next) {
   try {
-    const result = await semesterService.getSemesterById(req.params.id);
-    if (!result) {
-      throw errorResponder(errorTypes.UNPROCESSABLE_ENTITY, 'Semester not found');
+    const { id } = req.params;
+    const semester = await semesterService.getSemesterById(id);
+    
+    if (!semester) {
+      throw errorResponder(errorTypes.UNPROCESSABLE_ENTITY, 'Data semester nggak ketemu');
     }
-    return res.status(200).json(result);
+    
+    return res.status(200).json(semester);
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 
+// Update data semester
 async function updateSemester(req, res, next) {
   try {
-    const result = await semesterService.updateSemester(req.params.id, req.body);
+    const updated = await semesterService.updateSemester(req.params.id, req.body);
     return res.status(200).json({
-      message: 'Semester updated successfully',
-      data: result
+      message: 'Update semester aman',
+      data: updated
     });
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 
+// Hapus semester
 async function deleteSemester(req, res, next) {
   try {
     await semesterService.deleteSemester(req.params.id);
-    return res.status(200).json({ message: 'Semester deleted successfully' });
+    return res.status(200).json({ 
+      message: 'Data semester sudah dihapus' 
+    });
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 
+// Hitung nilai akhir mahasiswa
 async function getFinalGrade(req, res, next) {
   try {
     const { studentId } = req.params;
-    const result = await semesterService.calculateFinalGrade(studentId);
-    return res.status(200).json(result);
+    const finalGrade = await semesterService.calculateFinalGrade(studentId);
+    return res.status(200).json(finalGrade);
   } catch (err) {
-    return next(err);
+    next(err);
   }
 }
 

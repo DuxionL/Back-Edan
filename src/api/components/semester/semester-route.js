@@ -1,21 +1,20 @@
 const express = require('express');
 const semesterController = require('./semester-controller');
-// Ganti path ini sesuai nama file middleware auth kamu (misal: authentication.js)
-const auth = require('../../middlewares/authentication'); 
 const { authMiddleware } = require('../../middlewares');
+
 const route = express.Router();
 
 module.exports = (app) => {
+  // Prefix untuk semua route di file ini
   app.use('/semesters', route);
 
-  // Endpoint Kalkulasi Nilai
-  route.get('/final/:studentId', auth, semesterController.getFinalGrade);
+  // Endpoint hitung nilai akhir
+  route.get('/final/:studentId', authMiddleware, semesterController.getFinalGrade);
 
-  // Endpoint CRUD Semester
-  route.post('/', auth, semesterController.createSemester);
-  route.get('/', auth, semesterController.getAllSemesters);
-  route.get('/:id', auth, semesterController.getSemesterById);
-  route.put('/:id', auth, semesterController.updateSemester);
-  route.delete('/:id', auth, semesterController.deleteSemester);
+  // Route untuk operasional data semester (CRUD)
+  route.get('/', authMiddleware, semesterController.getAllSemesters);
+  route.get('/:id', authMiddleware, semesterController.getSemesterById);
   route.post('/', authMiddleware, semesterController.createSemester);
+  route.put('/:id', authMiddleware, semesterController.updateSemester);
+  route.delete('/:id', authMiddleware, semesterController.deleteSemester);
 };
