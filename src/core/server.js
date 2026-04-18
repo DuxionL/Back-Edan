@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const pinoHTTP = require('pino-http');
+const path = require('path');
 
 const config = require('./config');
 const logger = require('./logger')('app');
@@ -28,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Log HTTP requests with Pino
 app.use(pinoHTTP({ logger }));
+
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 
 // API routes
 app.use(`${config.api.prefix}`, routes());
