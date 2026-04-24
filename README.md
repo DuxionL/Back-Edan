@@ -208,15 +208,15 @@ Protected endpoints require the `Authorization` header:
 - Create a new course record
 - Protected route
 - Request body:
-  name (required)
-  code (required, unique)
-  sks (required, Number)
-  description (optional)
-  lecturer (optional, Object: name, nip, email)
-  teams_code (optional)
-  schedules (optional, Array of Objects: room, day, time)
+  - name (required)
+  - code (required, unique)
+  - sks (required, Number)
+  - description (optional)
+  - lecturer (optional, Object: name, nip, email)
+  - teams_code (optional)
+  - schedules (optional, Array of Objects: room, day, time)
 - example
-  {
+  `{
     "name": "BACK-END PROGRAMMING",
     "code": "TK23022",
     "sks": 4,
@@ -226,7 +226,7 @@ Protected endpoints require the `Authorization` header:
       "email": "jansonh@fti.untar.ac.id"
     },
     "teams_code": "wkr6t8j"
-  }
+  }`
 
 ### GET /api/courses
 - Get all courses (Summary view)
@@ -394,11 +394,11 @@ year (required, String): Tahun akademik (contoh: "2023/2024").
 term (required, String): Semester (contoh: "Ganjil" atau "Genap").
 
 - example:
-{
+`{
   "studentId": 12345,
   "year": "2023/2024",
   "term": "Ganjil"
-}
+}`
 
 ### GET /api/semesters
 - Fungsi: Ambil semua daftar semester yang sudah terdaftar di database.
@@ -417,7 +417,7 @@ term (required, String): Semester (contoh: "Ganjil" atau "Genap").
 - Menghitung rata-rata dengan bobot: Tugas 40%, UTS 30%, UAS 30%.
 
 - example
-{
+`{
   "studentId": 12345,
   "rincian": {
     "tugas": 85,
@@ -425,7 +425,7 @@ term (required, String): Semester (contoh: "Ganjil" atau "Genap").
     "uas": 75
   },
   "nilaiAkhir": 80.5
-}
+}`
 
 ### PUT /api/semesters/:id
 - Fungsi: Update data semester (misal ganti tahun atau term).
@@ -433,10 +433,10 @@ term (required, String): Semester (contoh: "Ganjil" atau "Genap").
 - Request Body: year, term.
 
 - example:
-{
+`{
   "year": "2024/2025",
   "term": "Genap"
-}
+}`
 
 ### DELETE /api/semesters/:id
 - Fungsi: Hapus data semester berdasarkan ID.
